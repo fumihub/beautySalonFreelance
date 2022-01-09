@@ -1,40 +1,31 @@
 <template>
   <v-app>
+    <NavigationMenu :color="color" :flat="flat" />
     <v-main>
       <v-container>
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+    <v-footer padless>
+      <v-row justify="center" no-gutters class="py-3">
+        <v-col class="text-center" cols="12">
+          <span>&copy; {{ new Date().getFullYear() }} 美容師フリーランス</span>
+        </v-col>
+      </v-row>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import NavigationMenu from '../components/NavigationMenu.vue'
 export default {
   name: 'DefaultLayout',
+  components: { NavigationMenu },
   data() {
     return {
-      clipped: false,
-      drawer: false,
       fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/',
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
-        },
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js',
+      color: '',
+      flat: null,
     }
   },
 }

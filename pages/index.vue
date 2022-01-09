@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <navigation :color="color" :flat="flat" />
     <v-main class="pt-0">
       <HomeSection />
       <AboutSection />
@@ -10,9 +9,9 @@
     </v-main>
     <v-scale-transition>
       <v-btn
-        fab
         v-show="fab"
         v-scroll="onScroll"
+        fab
         dark
         fixed
         bottom
@@ -23,19 +22,10 @@
         <v-icon>mdi-arrow-up</v-icon>
       </v-btn>
     </v-scale-transition>
-    <foote />
   </v-app>
 </template>
 
 <script>
-// import navigation from '../components/Navigation'
-// import foote from '../components/Footer'
-// import home from '../components/HomeSection'
-// import about from '../components/AboutSection'
-// import download from '../components/DownloadSection'
-// import pricing from '../components/PricingSection'
-// import contact from '../components/ContactSection'
-
 export default {
   name: 'HomePage',
   data: () => ({
