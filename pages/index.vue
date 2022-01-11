@@ -2,7 +2,7 @@
   <v-app>
     <v-main class="pt-0">
       <HomeSection />
-      <AboutSection />
+      <SearchSection />
       <DownloadSection />
       <PricingSection />
       <ContactSection />
