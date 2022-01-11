@@ -6,21 +6,16 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer padless>
-      <v-row justify="center" no-gutters class="py-3">
-        <v-col class="text-center" cols="12">
-          <span>&copy; {{ new Date().getFullYear() }} 美容師フリーランス</span>
-        </v-col>
-      </v-row>
-    </v-footer>
+    <FooterMenu />
   </v-app>
 </template>
 
 <script>
 import NavigationMenu from '../components/NavigationMenu.vue'
+import FooterMenu from '../components/FooterMenu.vue'
 export default {
   name: 'DefaultLayout',
-  components: { NavigationMenu },
+  components: { NavigationMenu, FooterMenu },
   data() {
     return {
       fixed: false,
