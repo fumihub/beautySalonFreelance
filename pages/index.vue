@@ -4,7 +4,7 @@
       <HomeSection />
       <SearchSection />
       <DownloadSection />
-      <PricingSection />
+      <UsersSection />
       <ContactSection />
     </v-main>
     <v-scale-transition>
