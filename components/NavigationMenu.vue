@@ -62,14 +62,3 @@ export default {
   components: { MainIcon },
 }
 </script>
-
-<style scoped>
-.v-toolbar {
-  transition: 0.6s;
-}
-
-.expand {
-  height: 80px !important;
-  padding-top: 10px;
-}
-</style>
