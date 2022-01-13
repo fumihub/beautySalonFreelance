@@ -1,5 +1,5 @@
 <template>
-  <section id="download">
+  <section id="ranking">
     <v-container fluid>
       <v-row align="center" justify="center">
         <v-col cols="10">

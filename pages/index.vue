@@ -3,7 +3,7 @@
     <v-main class="pt-0">
       <HomeSection />
       <SearchSection />
-      <DownloadSection />
+      <RankingSection />
       <PricingSection />
       <ContactSection />
     </v-main>
