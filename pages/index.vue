@@ -3,9 +3,7 @@
     <v-main class="pt-0">
       <HomeSection />
       <SearchSection />
-      <DownloadSection />
       <UsersSection />
-      <ContactSection />
     </v-main>
     <v-scale-transition>
       <v-btn
