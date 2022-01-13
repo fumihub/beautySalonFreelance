@@ -9,15 +9,5 @@
 </template>
 
 <script>
-export default {
-  data: () => ({
-    icons: [],
-  }),
-}
+export default {}
 </script>
-
-<style scoped>
-.v-card {
-  width: 100%;
-}
-</style>
