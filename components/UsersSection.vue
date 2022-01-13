@@ -6,7 +6,7 @@
           <v-card style="width: 100%">
             <v-row class="text-center ma-6">
               <!-- 利用者の方 -->
-              <v-col class="col-12 col-sm-6 col-md-4">
+              <v-col class="col-12 col-sm-6">
                 <div class="flex-center">
                   <v-card-text>
                     <div class="flex-center my-3">
@@ -23,7 +23,7 @@
                 </div>
               </v-col>
               <!-- 美容師の方 -->
-              <v-col class="col-12 col-sm-6 col-md-4">
+              <v-col class="col-12 col-sm-6">
                 <div class="flex-center">
                   <v-card-text>
                     <div class="flex-center my-3">
