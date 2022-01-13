@@ -4,6 +4,7 @@
       <HomeSection />
       <SearchSection />
       <UsersSection />
+      <RankingSection />
     </v-main>
     <v-scale-transition>
       <v-btn
