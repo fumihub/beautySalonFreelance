@@ -1,54 +1,58 @@
 <template>
-  <section id="ranking">
-    <v-container fluid>
-        <v-row align="center" justify="center">
-          <v-col cols="12" class="">
-            <h1 align="center" justify="center" class="font-weight-light display-2">人気美容師<br>ランキング</h1>
-            <h1 class="font-weight-bold my-3">
-              1~10位
-            </h1>
-            <template>
-              <v-carousel
-                cycle
-                show-arrows
-                hide-delimiters
-                class="my-3"
-              >
-                <v-carousel-item
-                  v-for="(item,i) in items"
-                  :key="i"
-                  reverse-transition="fade-transition"
-                  transition="fade-transition"
-                >
-                <v-card style="margin: 20px; ; ;">
-                  <v-img v-bind:src="item.src" v-bind:lazy-src="item.src" class="grey lighten-2" />
-                  <v-sheet
-                    :color="item.backgroundColor"
-                    class="circle"
-                  >
-                    <v-card-text
-                      class="text--ranking"
-                    >
-                      {{ i+1 }}位
-                    </v-card-text>
-                  </v-sheet>
-                  <v-card-title>
-                    {{ item.name }}
-                  </v-card-title>
-                  <v-card-text class="text--primary">
-                    {{ item.discription }}
-                  </v-card-text>
-                </v-card>
-              </v-carousel-item>
-            </v-carousel>
-            </template>
-          </v-col>
-        </v-row>
-    </v-container>
-  </section>
+    <section id="ranking">
+      <v-container fluid>
+          <v-row align="center" justify="center">
+            <v-col cols="12" sm="7" md="6" lg="5" xl="3">
+              <h1 align="center" justify="center" class="font-weight-light display-2">人気美容師<br>ランキング</h1>
+              <h1 class="font-weight-bold my-3">
+                1~10位
+              </h1>
+              <v-row align="center" justify="center">
+                <v-col cols="12" class="">
+                  <client-only>
+                    <swiper class="swiper" :options="swiperOption">
+                      <swiper-slide
+                        v-for="(item,i) in items"
+                        :key="i"
+                        reverse-transition="fade-transition"
+                        transition="fade-transition">
+                        <v-card style="margin: 20px;">
+                          <v-img v-bind:src="item.src" v-bind:lazy-src="item.src" class="grey lighten-2" />
+                          <v-sheet
+                            :color="item.backgroundColor"
+                            class="circle"
+                          >
+                            <v-card-text
+                              class="text--ranking"
+                            >
+                              {{ i+1 }}位
+                            </v-card-text>
+                          </v-sheet>
+                          <v-card-title>
+                            {{ item.name }}
+                          </v-card-title>
+                          <v-card-text class="text--primary">
+                            {{ item.discription }}
+                          </v-card-text>
+                        </v-card>
+                      </swiper-slide>
+                      <div class="swiper-pagination" slot="pagination"></div>
+                    </swiper>
+                  </client-only>
+                </v-col>
+              </v-row>
+            </v-col>
+          </v-row>
+      </v-container>
+    </section>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+.swiper {
+  height: 600px;
+  width: 100%; 
+}
+  
 .circle {
   width: 65px;
   height: 50px;
@@ -63,9 +67,31 @@
 </style>
 
 <script>
+  import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+  import 'swiper/css/swiper.css'
   export default {
+    name: 'swiper-example-centered-auto',
+    title: 'Centered slides + Auto slides per view',
+    components: {
+      Swiper,
+      SwiperSlide
+    },
     data () {
       return {
+        swiperOption: {
+          slidesPerView: 'auto',
+          centeredSlides: true,
+          spaceBetween: 30,
+          loop: true,
+          autoplay: {
+            delay: 2500,
+            disableOnInteraction: false
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+          }
+        },
         items: [
           /* src を v-bind によって変数バインドさせたい場合は
               そのままパス文字列が出力されてしまう。
