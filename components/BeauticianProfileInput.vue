@@ -178,6 +178,18 @@
                   ></v-combobox>
                 </v-col>
               </v-row>
+              <!-- 自己紹介入力 -->
+              <v-row align="center" justify="center">
+                <v-col class="col-12">
+                  <p class="font-weight-bold">*自己紹介</p>
+                  <v-textarea
+                    v-model="profileInput.introduction"
+                    counter
+                    label="自己紹介を入力"
+                    :rules="rules"
+                  ></v-textarea>
+                </v-col>
+              </v-row>
               <!-- SNSのURL入力 -->
               <v-row align="center" justify="center">
                 <v-col class="col-12">
@@ -217,6 +229,7 @@
           serviceSelect: [],
           goodMenuSelect: [],
           holidaySelect: [],
+          introduction: null,
           snsURL: [],
         },
         menu1: false,
@@ -267,6 +280,7 @@
           "土",
           "日",
           "祝日",
+          "なし",
         ],
         sns: [
           {

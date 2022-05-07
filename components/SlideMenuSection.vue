@@ -21,18 +21,15 @@
                   :key="topMenu"
                 >
                   <v-card v-if="topMenu === 'トップ'">
-                    <h1 class="top-intro-title pa-1">FullNameについて</h1>
+                    <h1 class="top-intro-title pa-1">{{ lastName + " " + firstName }}について</h1>
                     <v-card>
-                      <v-card-title class="font-weight-bold">
-                        title
-                      </v-card-title>
                       <v-card-text>
-                        
+                        {{ introduction }}
                       </v-card-text>
                     </v-card>
                     <v-card>
                       <v-card-title class="font-weight-bold">
-                        FullNameの予約情報
+                        {{ lastName + " " + firstName }}の予約情報
                       </v-card-title>
                       <client-only>
                         <swiper class="swiper" style="margin: 20px;" :options="swiperOption">
@@ -58,16 +55,19 @@
                   <v-card v-else-if="topMenu === 'メニュー'">
                     <h1 class="top-intro-title pa-1">メニュー</h1>
                     <v-card
-                      v-for="(menu,i) in menu"
+                      v-for="(menu,i) in menus"
                       :key="i">
                       <v-card-title class="font-weight-bold">
-                        <p>{{ menu.title }}</p>
+                        <p>{{ menu.menu }}</p>
                       </v-card-title>
                       <v-card-subtitle>
-                        <p>{{ menu.text }}</p>
+                        <p>{{ menu.menuDetail }}</p>
                       </v-card-subtitle>
                       <v-card-text>
-                        <p>{{ menu.time }}</p>
+                        <p>{{ `¥${menu.price}` }}</p>
+                      </v-card-text>
+                      <v-card-text>
+                        <p>{{ `時間：${menu.timeSelect}` }}</p>
                       </v-card-text>
                       <v-card-actions class="area">
                         <v-btn class="btn">予約</v-btn>
@@ -99,14 +99,25 @@
                       </v-card-text>
                     </v-card>
                   </v-card>
-                  <v-card v-else-if="topMenu === 'アクセス'">
-                    <h1 class="top-intro-title pa-1">アクセス</h1>
+                  <v-card v-else-if="topMenu === 'SNS'">
+                    <h1 class="top-intro-title pa-1">SNS</h1>
                     <v-card
-                      v-for="(map,i) in map"
-                      :key="i">
-                      <v-card-title class="font-weight-bold">
-                        <p>{{ map.address }}</p>
+                      v-for="(sns,i) in sns"
+                      :key="i"
+                      :color="sns.color"
+                      dark>
+                      <v-card-title>
+                        <v-icon
+                          large
+                          left
+                        >
+                          {{ sns.icon }}
+                        </v-icon>
+                        <span class="text-h6 font-weight-light">{{ sns.title }}</span>
                       </v-card-title>
+                      <v-card-text class="font-weight-bold">
+                        <p>{{ snsURL[i] }}</p>
+                      </v-card-text>
                     </v-card>
                   </v-card>
                 </v-tab-item>
@@ -121,19 +132,39 @@
   import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
   import 'swiper/css/swiper.css'
   export default {
-    name: 'swiper-example-multiple-slides-per-biew',
+    name: 'SwiperExampleMultipleSlidesPerBiew',
     title: 'Centered slides',
     components: {
       Swiper,
       SwiperSlide
     },
+    props:{
+      lastName: {
+        type: String,
+        required: true
+      },
+      firstName: {
+        type: String,
+        required: true
+      },
+      menus: {
+        type: Array,
+        required: true
+      },
+      introduction: {
+        type: String,
+        required: true
+      },
+      snsURL: {
+        type: Array,
+        required: true
+      },
+    },
     data () {
       const reserveDate = new Date();
       const dayOfWeekStr = [ "日", "月", "火", "水", "木", "金", "土" ];
       const reserves = [];
-      const menus = [];
       const evaluations = [];
-      const maps = [];
       for (let i = 0; i < 31; i++) {
         const preMonth = reserveDate.getMonth()+1;
         if (i !== 0) {
@@ -167,14 +198,6 @@
         }
         reserves.push(reserve);
       }
-      for (let i = 0; i < 10; i++) {
-        const menu = {};
-        menu.title = 'カットメニュー';
-        menu.text = '詳細テキスト';
-        menu.price = `¥${i}`;
-        menu.time = `時間：${i}分`
-        menus.push(menu);
-      }
       const evaluationDate = new Date();
       for (let i = 0; i <= 5; i+=0.5) {
         const evaluation = {};
@@ -186,11 +209,6 @@
         evaluation.title = '口コミ';
         evaluation.text = '口コミ内容';
         evaluations.push(evaluation);
-      }
-      for (let i = 0; i <= 1; i++) {
-        const map = {};
-        map.address = '東京都'
-        maps.push(map);
       }
       return {
         swiperOption: {
@@ -205,22 +223,27 @@
         },
         tab: null,
         topMenus: [
-          'トップ', 'メニュー', '口コミ', 'アクセス'
+          'トップ', 'メニュー', '口コミ', 'SNS'
         ],
         reserve: reserves,
-        menu: menus,
         evaluation: evaluations,
-        map: maps,
-        maplocation: { lng: 0, lat: 0 },
-        zoom: 4,
-        styleMap: {
-          width: '100%',
-          height: '400px',
-        },
-        mapOptions: {
-          streetViewControl: false,
-          styles: [],
-        },
+        sns: [
+          {
+            icon:"mdi-facebook",
+            title:"Facebook",
+            color:"#3b5998",
+          },
+          {
+            icon:"mdi-twitter",
+            title:"Twitter",
+            color:"#26c6da",
+          },
+          {
+            icon:"mdi-instagram",
+            title:"Instagram",
+            color:"#E1306C",
+          },
+        ],
       }
     },
   }

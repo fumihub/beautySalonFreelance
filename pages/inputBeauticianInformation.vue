@@ -135,9 +135,6 @@ export default {
       this.profilePictures = profilePictures;
     },
     transition() {
-      console.log(this.profile);
-      console.log(this.menus);
-      console.log(this.profilePictures);
       let error = false;
       // エラー処理(profile)----------
       // profileが空の場合
@@ -295,7 +292,7 @@ export default {
       }
       // profilePictureが空でない場合
       else {
-        for (let i = 0; i < this.menus.length; i++) {
+        for (let i = 0; i < this.profilePictures.length; i++) {
           // 画像が未入力
           if (this.profilePictures[i].image === null) {
             alert("プロフィール画像を入力してください。");
@@ -308,10 +305,10 @@ export default {
       // エラーがなければ、確認画面へ(引数：profile, menu, profilePicture)
       if (!error) {
         // 確認画面に遷移する
-        // this.$router.push({
-        //   // path: "/animation",
-        //   query: { profile: this.profile, menu: this.menu, profilePicture: this.profilePicture },
-        // });
+        this.$router.push({
+          path: "/checkBeauticianInformation",
+          query: { profile: this.profile, menus: this.menus, profilePictures: this.profilePictures },
+        });
       }
     },
     isEmpty(obj){
