@@ -24,23 +24,21 @@
     </section>
 </template>
 
-<style lang="scss" scoped>
-.swiper {
-  height: 100%;
-  width: 100%; 
-}
-
-</style>
-
 <script>
   import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
   import 'swiper/css/swiper.css'
   export default {
-    name: 'swiper-example-centered-auto',
+    name: 'SwiperExampleCenteredAuto',
     title: 'Centered slides + Auto slides per view',
     components: {
       Swiper,
       SwiperSlide
+    },
+    props:{
+      images: {
+        type: Array,
+        required: true
+      },
     },
     data () {
       return {
@@ -58,25 +56,22 @@
             clickable: true
           }
         },
-        items: [
-          /* src を v-bind によって変数バインドさせたい場合は
-              そのままパス文字列が出力されてしまう。
-              回避するために「require()」で囲む
-          */ 
-          {
-            src: require('~/assets/img/1.svg'),
-          },
-          {
-            src: require('~/assets/img/1.svg'),
-          },
-          {
-            src: require('~/assets/img/1.svg'),
-          },
-          {
-            src: require('~/assets/img/1.svg'),
-          },
-        ],
+        items: [],
       }
+    },
+    created() {
+      // TODO 画像をS3に登録してから取得する
+      // for (let i = 0; i < this.images.length; i++) {
+      //   this.items.push(URL.createObjectURL(this.images[i].image));
+      // }
     },
   }
 </script>
+
+<style lang="scss" scoped>
+.swiper {
+  height: 100%;
+  width: 100%; 
+}
+
+</style>

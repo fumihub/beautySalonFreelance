@@ -47,25 +47,6 @@
     </section>
 </template>
 
-<style lang="scss" scoped>
-.swiper {
-  height: 100%;
-  width: 100%; 
-}
-  
-.circle {
-  width: 65px;
-  height: 50px;
-  border-radius: 50%;
-}
-.text--ranking {
-  color: black;
-  font-weight: bold;
-  margin-left: 5px;
-}
-
-</style>
-
 <script>
   import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
   import 'swiper/css/swiper.css'
@@ -172,3 +153,22 @@
     },
   }
 </script>
+
+<style lang="scss" scoped>
+.swiper {
+  height: 100%;
+  width: 100%; 
+}
+  
+.circle {
+  width: 65px;
+  height: 50px;
+  border-radius: 50%;
+}
+.text--ranking {
+  color: black;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+</style>
