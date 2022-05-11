@@ -165,12 +165,13 @@
       const dayOfWeekStr = [ "日", "月", "火", "水", "木", "金", "土" ];
       const reserves = [];
       const evaluations = [];
+      // 予約情報
       for (let i = 0; i < 31; i++) {
         const preMonth = reserveDate.getMonth()+1;
         if (i !== 0) {
           reserveDate.setDate(reserveDate.getDate() + 1);
         }
-        // 1日追加した月と追加する前の月が異なる場合
+        // 1日追加した月と追加する前の月が異なる場合(小の月の場合)
         if (preMonth !== reserveDate.getMonth()+1) {
           break;
         }
@@ -185,7 +186,7 @@
           // 赤文字に修正
           reserve.date = `<span style="color:#ff0000;">${reserveDate.getMonth()+1}/${reserveDate.getDate()}(${dayOfWeekStr[reserveDate.getDay()]})</span>`;
         }
-        // 土日曜日の場合
+        // 土日曜日以外の場合
         else {
           reserve.date = `${reserveDate.getMonth()+1}/${reserveDate.getDate()}(${dayOfWeekStr[reserveDate.getDay()]})`;
         }
@@ -198,6 +199,7 @@
         }
         reserves.push(reserve);
       }
+      // 口コミ情報
       const evaluationDate = new Date();
       for (let i = 0; i <= 5; i+=0.5) {
         const evaluation = {};

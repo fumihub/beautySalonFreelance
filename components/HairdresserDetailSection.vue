@@ -96,59 +96,27 @@
       };
       this.informations.push(time);
       // 支払い方法代入
-      let pay = "";
-      for (let i = 0; i < this.payments.length; i++) {
-        pay = pay + this.payments[i];
-        // 最後の要素以外の場合
-        if (i + 1 !== this.payments.length) {
-          pay = pay + " / ";
-        }
-      }
       const payment = {
         category: "支払い方法",
-        information: pay,
+        information: this.payments.join(' / '),
       };
       this.informations.push(payment);
       // 設備・サービス代入
-      let svc = "";
-      for (let i = 0; i < this.services.length; i++) {
-        svc = svc + this.services[i];
-        // 最後の要素以外の場合
-        if (i + 1 !== this.services.length) {
-          svc = svc + " / ";
-        }
-      }
       const service = {
         category: "設備・サービス",
-        information: svc,
+        information: this.services.join(' / '),
       };
       this.informations.push(service);
       // 得意メニュー代入
-      let gm = "";
-      for (let i = 0; i < this.goodMenus.length; i++) {
-        gm = gm + this.goodMenus[i];
-        // 最後の要素以外の場合
-        if (i + 1 !== this.goodMenus.length) {
-          gm = gm + " / ";
-        }
-      }
       const goodMenu = {
         category: "得意メニュー",
-        information: gm,
+        information: this.goodMenus.join(' / '),
       };
       this.informations.push(goodMenu);
       // 定休日代入
-      let day = "";
-      for (let i = 0; i < this.holidays.length; i++) {
-        day = day + this.holidays[i];
-        // 最後の要素以外の場合
-        if (i + 1 !== this.holidays.length) {
-          day = day + " / ";
-        }
-      }
       const holiday = {
         category: "得意メニュー",
-        information: day,
+        information: this.holidays.join(' / '),
       };
       this.informations.push(holiday);
     }

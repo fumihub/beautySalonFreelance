@@ -47,12 +47,17 @@
   </section>
 </template>
 
+<script>
+export default {
+  data: () => ({
+    
+  })
+};
+</script>
+
 <style lang="scss">
 $main_color: #283e79;
 
-</style>
-
-<style scoped>
 .flex-center {
   display: flex;
   align-items: center;
@@ -72,11 +77,3 @@ section {
   position: relative;
 }
 </style>
-
-<script>
-export default {
-  data: () => ({
-    
-  })
-};
-</script>
